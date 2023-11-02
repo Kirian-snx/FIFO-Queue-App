@@ -12,6 +12,7 @@ const actionTypes: ActionType[] = [
 	{ type: 'C', maxCredits: 200 },
 ];
 let credits: Credit[] = initializeCredits(actionTypes);
+
 setInterval(updateCredits, 24 * 60 * 60 * 1000);
 
 // Add a new action to the queue

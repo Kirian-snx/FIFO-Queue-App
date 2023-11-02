@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node dist/server.js",
-    "test": "jest --coverage --verbose"
+    "test": "jest --coverage --verbose --forceExit"
   },
   "author": "",
   "license": "ISC",

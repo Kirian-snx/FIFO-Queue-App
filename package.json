@@ -5,9 +5,11 @@
   "scripts": {
     "start": "concurrently \"cd Frontend && npm start\" \"cd Backend && npm start\"",
     "test-frontend": "cd Frontend && npm test",
-    "test-backend": "cd Backend && npm test"
+    "test-backend": "cd Backend && npm test",
+    "test": "concurrently \"cd Frontend && npm test\" \"cd Backend && npm test\""
   },
   "devDependencies": {
+    "@types/jest": "^29.5.7",
     "concurrently": "^6.5.0"
   }
 }

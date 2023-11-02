@@ -1,27 +1,17 @@
 import supertest from 'supertest';
 import app from '../../src/server';
-const { initializeCredits, updateCredits } = require('../../src/routes/credits');
+const { initializeCredits } = require('../../src/routes/credits');
 import { Credit } from '../../src/models/Credit';
 
-
 const request = supertest(app);
-const originalDate = Date;
-const mockDate = new Date('2023-01-01T00:00:00Z');
-global.Date = class extends originalDate {
-  constructor() {
-    super();
-    return mockDate;
-  }
-} as DateConstructor;
 
 describe('Server Routes Test', () => {
 
   let credits: Credit[];
   const originalDate = Date;
-  let mockDate: Date;
+  const mockDate = new Date('2023-01-01T00:00:00Z');
 
   beforeEach(() => {
-    mockDate = new Date('2023-01-01T00:00:00Z');
     global.Date = class extends originalDate {
       constructor() {
         super();
@@ -39,7 +29,7 @@ describe('Server Routes Test', () => {
   afterEach(() => {
     global.Date = originalDate;
   });
-
+  
 
   it('should add an action to the queue', async () => {
     const response = await request
