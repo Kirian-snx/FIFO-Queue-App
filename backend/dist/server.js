@@ -9,6 +9,7 @@ const actions_1 = __importDefault(require("./routes/actions"));
 const credits_1 = __importDefault(require("./routes/credits"));
 const app = (0, express_1.default)();
 const port = 3030;
+// @TODO: Add middleware to log all requests
 // app.use((req, res, next) => {
 //   console.log(`${req.method} ${req.url}`);
 //   next();
