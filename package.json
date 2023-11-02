@@ -1,0 +1,13 @@
+{
+  "name": "waalaxy-test",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"cd Frontend && npm start\" \"cd Backend && npm start\"",
+    "test-frontend": "cd Frontend && npm test",
+    "test-backend": "cd Backend && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^6.5.0"
+  }
+}
