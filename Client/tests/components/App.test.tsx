@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen, act, fireEvent } from '@testing-library/react';
-import App from '../../src/App';
+import App from '../../src/components/App';
 import axios from '../../src/services/api';
 
 jest.mock('../../src/services/api', () => ({
