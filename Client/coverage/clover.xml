@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699002703263" clover="3.2.0">
-  <project timestamp="1699002703264" name="All files">
+<coverage generated="1699002909072" clover="3.2.0">
+  <project timestamp="1699002909073" name="All files">
     <metrics statements="62" coveredstatements="55" conditionals="3" coveredconditionals="1" methods="20" coveredmethods="19" elements="85" coveredelements="75" complexity="0" loc="62" ncloc="62" packages="1" files="4" classes="4"/>
     <file name="AddAction.tsx" path="/Users/kirian/Dev/FIFO-Queue-App/Client/src/components/AddAction.tsx">
       <metrics statements="13" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>

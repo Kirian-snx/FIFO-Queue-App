@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"cd Frontend && npm start\" \"cd Backend && npm start\"",
-    "test-frontend": "cd Frontend && npm test",
+    "start": "concurrently \"cd Client && npm start\" \"cd Backend && npm start\"",
+    "test-client": "cd Client && npm test",
     "test-backend": "cd Backend && npm test",
-    "test": "concurrently \"cd Frontend && npm test\" \"cd Backend && npm test\""
+    "test": "concurrently \"cd Client && npm test\" \"cd Backend && npm test\""
   },
   "devDependencies": {
     "@types/jest": "^29.5.7",

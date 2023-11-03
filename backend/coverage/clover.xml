@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1698949975128" clover="3.2.0">
-  <project timestamp="1698949975128" name="All files">
-    <metrics statements="72" coveredstatements="54" conditionals="17" coveredconditionals="10" methods="14" coveredmethods="8" elements="103" coveredelements="72" complexity="0" loc="72" ncloc="72" packages="2" files="3" classes="3"/>
+<coverage generated="1699002906738" clover="3.2.0">
+  <project timestamp="1699002906738" name="All files">
+    <metrics statements="72" coveredstatements="54" conditionals="17" coveredconditionals="9" methods="14" coveredmethods="8" elements="103" coveredelements="71" complexity="0" loc="72" ncloc="72" packages="2" files="3" classes="3"/>
     <package name="src">
       <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="server.ts" path="/Users/kirian/Dev/FIFO-Queue-App/backend/src/server.ts">
+      <file name="server.ts" path="/Users/kirian/Dev/FIFO-Queue-App/Backend/src/server.ts">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -22,8 +22,8 @@
       </file>
     </package>
     <package name="src.routes">
-      <metrics statements="59" coveredstatements="41" conditionals="17" coveredconditionals="10" methods="13" coveredmethods="7"/>
-      <file name="actions.ts" path="/Users/kirian/Dev/FIFO-Queue-App/backend/src/routes/actions.ts">
+      <metrics statements="59" coveredstatements="41" conditionals="17" coveredconditionals="9" methods="13" coveredmethods="7"/>
+      <file name="actions.ts" path="/Users/kirian/Dev/FIFO-Queue-App/Backend/src/routes/actions.ts">
         <metrics statements="30" coveredstatements="28" conditionals="10" coveredconditionals="8" methods="5" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -56,8 +56,8 @@
         <line num="60" count="1" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
       </file>
-      <file name="credits.ts" path="/Users/kirian/Dev/FIFO-Queue-App/backend/src/routes/credits.ts">
-        <metrics statements="29" coveredstatements="13" conditionals="7" coveredconditionals="2" methods="8" coveredmethods="2"/>
+      <file name="credits.ts" path="/Users/kirian/Dev/FIFO-Queue-App/Backend/src/routes/credits.ts">
+        <metrics statements="29" coveredstatements="13" conditionals="7" coveredconditionals="1" methods="8" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -66,7 +66,7 @@
         <line num="14" count="7" type="stmt"/>
         <line num="15" count="7" type="stmt"/>
         <line num="16" count="21" type="stmt"/>
-        <line num="17" count="21" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="21" type="cond" truecount="1" falsecount="1"/>
         <line num="19" count="21" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
