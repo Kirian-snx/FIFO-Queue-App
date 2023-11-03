@@ -5,9 +5,9 @@ import { Credit } from '../models/Credit';
 const router = express.Router();
 let credits: Credit[] = [];
 const actionTypes: ActionType[] = [
-  { type: 'A', maxCredits: 100 },
-  { type: 'B', maxCredits: 150 },
-  { type: 'C', maxCredits: 200 },
+  { type: 'A', maxCredits: 5 },
+  { type: 'B', maxCredits: 10 },
+  { type: 'C', maxCredits: 10 },
 ];
 
 export const initializeCredits = (actionTypes: ActionType[]): Credit[] => {

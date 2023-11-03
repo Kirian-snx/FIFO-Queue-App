@@ -8,9 +8,9 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 let credits = [];
 const actionTypes = [
-    { type: 'A', maxCredits: 100 },
-    { type: 'B', maxCredits: 150 },
-    { type: 'C', maxCredits: 200 },
+    { type: 'A', maxCredits: 5 },
+    { type: 'B', maxCredits: 10 },
+    { type: 'C', maxCredits: 10 },
 ];
 const initializeCredits = (actionTypes) => {
     const now = new Date();

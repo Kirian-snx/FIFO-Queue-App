@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.75% </span>
+                <span class="strong">95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>30/32</span>
+                <span class='fraction'>38/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">94.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>28/30</span>
+                <span class='fraction'>34/36</span>
             </div>
         
             
@@ -126,7 +126,12 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -163,19 +168,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,9 +208,9 @@ import { ActionType } from '../models/ActionTypes';
 const router = express.Router();
 const queue: Action[] = [];
 const actionTypes: ActionType[] = [
-  { type: 'A', maxCredits: 100 },
-	{ type: 'B', maxCredits: 150 },
-	{ type: 'C', maxCredits: 200 },
+  { type: 'A', maxCredits: 5 },
+	{ type: 'B', maxCredits: 10 },
+	{ type: 'C', maxCredits: 10 },
 ];
 let credits: Credit[] = initializeCredits(actionTypes);
 &nbsp;
@@ -226,21 +236,26 @@ router.post('/add-action', (req: Request, res: Response) =&gt; {
 router.post('/execute-action', (req: Request, res: Response) =&gt; {
   if (queue.length === 0) {
     res.status(400).json({ message: 'Queue is empty.' });
-  } else {
-    const action = queue.shift();
-    if (action) {
-      const creditIndex = credits.findIndex((credit) =&gt; credit.type === action.type);
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (creditIndex === -1 || credits[creditIndex].value &lt;= 0) {
-<span class="cstat-no" title="statement not covered" >        res.status(400).json({ message: 'Insufficient credits for this action.' });</span>
-      } else {
-        credits[creditIndex].value--;
-        res.status(200).json({ message: 'Action executed.' });
-      }
-    } else <span class="missing-if-branch" title="else path not taken" >E</span>{
-<span class="cstat-no" title="statement not covered" >      res.status(500).json({ message: 'Error executing action.' });</span>
-    }
+    return;
   }
+  const action = queue.find((action) =&gt; {
+    const creditIndex = credits.findIndex((credit) =&gt; credit.type === action.type);
+    return creditIndex !== -1 &amp;&amp; credits[creditIndex].value &gt; 0;
+  });
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!action) {
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ message: 'No enought credits to execute actions in the queue.' });</span>
+<span class="cstat-no" title="statement not covered" >    return;</span>
+  }
+  const creditIndex = credits.findIndex((credit) =&gt; credit.type === action.type);
+  credits[creditIndex].value--;
+  const actionIndex = queue.findIndex((queueAction) =&gt; queueAction === action);
+  if (actionIndex &gt; -1) {
+    queue.splice(actionIndex, 1);
+  }
+  console.log("actionIndex : " + actionIndex);
+  res.status(200).json({ message: 'Action executed.', action: action });
 });
+&nbsp;
 &nbsp;
 // Get the current queue status
 router.get('/queue-status', (req: Request, res: Response) =&gt; {
@@ -259,7 +274,7 @@ export default router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-03T09:15:06.697Z
+                at 2023-11-03T10:38:56.261Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

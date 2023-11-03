@@ -8,9 +8,9 @@ const credits_1 = require("./credits");
 const router = express_1.default.Router();
 const queue = [];
 const actionTypes = [
-    { type: 'A', maxCredits: 100 },
-    { type: 'B', maxCredits: 150 },
-    { type: 'C', maxCredits: 200 },
+    { type: 'A', maxCredits: 5 },
+    { type: 'B', maxCredits: 10 },
+    { type: 'C', maxCredits: 10 },
 ];
 let credits = (0, credits_1.initializeCredits)(actionTypes);
 setInterval(credits_1.updateCredits, 24 * 60 * 60 * 1000);
@@ -34,23 +34,27 @@ router.post('/add-action', (req, res) => {
 router.post('/execute-action', (req, res) => {
     if (queue.length === 0) {
         res.status(400).json({ message: 'Queue is empty.' });
+        return;
     }
-    else {
-        const action = queue.shift();
-        if (action) {
-            const creditIndex = credits.findIndex((credit) => credit.type === action.type);
-            if (creditIndex === -1 || credits[creditIndex].value <= 0) {
-                res.status(400).json({ message: 'Insufficient credits for this action.' });
-            }
-            else {
-                credits[creditIndex].value--;
-                res.status(200).json({ message: 'Action executed.' });
-            }
-        }
-        else {
-            res.status(500).json({ message: 'Error executing action.' });
-        }
+    const action = queue.find((action) => {
+        const creditIndex = credits.findIndex((credit) => credit.type === action.type);
+        return creditIndex !== -1 && credits[creditIndex].value > 0;
+    });
+    if (!action) {
+        res.status(400).json({ message: 'No enought credits to execute actions in the queue.' });
+        return;
     }
+    const creditIndex = credits.findIndex((credit) => credit.type === action.type);
+    console.log("action : " + action.type);
+    console.log("is : " + credits[creditIndex].type);
+    console.log("is : " + credits[creditIndex].value);
+    credits[creditIndex].value--;
+    const actionIndex = queue.findIndex((queueAction) => queueAction === action);
+    if (actionIndex > -1) {
+        queue.splice(actionIndex, 1);
+    }
+    console.log("actionIndex : " + actionIndex);
+    res.status(200).json({ message: 'Action executed.', action: action });
 });
 // Get the current queue status
 router.get('/queue-status', (req, res) => {
