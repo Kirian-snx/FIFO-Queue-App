@@ -75,7 +75,6 @@ const App: React.FC = () => {
       <Credits credits={credits} />
       <AddAction addActionToQueue={addActionToQueue} />
     </div>
-
   );
 };
 

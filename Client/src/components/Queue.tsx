@@ -1,4 +1,6 @@
 import React from 'react';
+import '../styles/queueStyles.css';
+import '../styles/buttonStyles.css';
 
 type Action ={
   id: number;
@@ -12,14 +14,16 @@ type QueueProps = {
 
 const Queue: React.FC<QueueProps> = ({ queue, executeAction }) => {
   return (
-    <div>
+    <div className="queue">
       <h2>Queue</h2>
-      <ul>
+      <ul className="horizontal-queue">
         {queue.map((action, index) => (
-          <li key={index}>{action.type}</li>
+          <li className="queue-item" key={index}>
+            {action.type}
+          </li>
         ))}
       </ul>
-      <button onClick={executeAction}>Execute Action</button>
+      <button className="round-button" onClick={executeAction}>Execute Action</button>
     </div>
   );
 };

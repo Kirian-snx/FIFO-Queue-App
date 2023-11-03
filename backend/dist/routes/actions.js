@@ -45,9 +45,6 @@ router.post('/execute-action', (req, res) => {
         return;
     }
     const creditIndex = credits.findIndex((credit) => credit.type === action.type);
-    console.log("action : " + action.type);
-    console.log("is : " + credits[creditIndex].type);
-    console.log("is : " + credits[creditIndex].value);
     credits[creditIndex].value--;
     const actionIndex = queue.findIndex((queueAction) => queueAction === action);
     if (actionIndex > -1) {

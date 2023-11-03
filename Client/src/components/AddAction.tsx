@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/addActionStyles.css';
 
 interface AddActionProps {
   addActionToQueue: (actionType: string) => void;
@@ -19,15 +20,16 @@ const AddAction: React.FC<AddActionProps> = ({ addActionToQueue }) => {
   };  
 
   return (
-    <div>
+    <div className="add-action">
       <h2>Add Action</h2>
       <input
+        className="action-input"
         type="text"
         placeholder="Action Type (e.g., A, B, C)"
         value={actionType}
         onChange={(e) => setActionType(e.target.value)}
       />
-      <button onClick={handleAddAction}>Add Action</button>
+      <button className="action-button" onClick={handleAddAction}>Add Action</button>
     </div>
   );
 };

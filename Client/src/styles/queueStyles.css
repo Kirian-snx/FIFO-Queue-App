@@ -1,0 +1,13 @@
+.queue {
+  margin-left: 20px;
+}
+
+.horizontal-queue {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.queue-item {
+  margin-right: 10px;
+}
