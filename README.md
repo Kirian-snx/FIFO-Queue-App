@@ -49,3 +49,8 @@ For development, you can use the following command to start the server and the R
 ```bash
 npm run dev        # Start the server and React application with hot-reloading
 ```
+
+# API Documentation
+
+[Web App FIFO Queue](backend/API.md) - Link to API Documentation
+
