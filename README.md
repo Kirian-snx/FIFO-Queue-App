@@ -54,5 +54,3 @@ npm run dev        # Start the server and React application with hot-reloading
 
 [Web App FIFO Queue](backend/API.md) - Link to API Documentation
 
-<!-- include(backend/API.md) -->
-
